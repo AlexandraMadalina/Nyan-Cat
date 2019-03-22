@@ -13,28 +13,47 @@
 
 <body>
 
-      <button type="button" name="button" id="doge">Doggo</button>
+  <button type="button" name="button" id="doge">Doggo</button>
 
-<script type="text/javascript">
+  <script type="text/javascript">
+    // the text of the button will change after the page is loaded because the script is added at the end of the body
+    document.getElementById("doge").innerHTML = "Woof!";;
 
-  document.getElementById("doge").innerHTML = "Woof!";
-
-var button = document.getElementById("doge");
-
-
-  button.addEventListener("mouseenter", function(){
+    var button = document.getElementById("doge");
+    //first we create the icon. The style properties are already set in css file
     let dogIcon = document.createElement("img");
 
-    dogIcon.src= "dogIcon.png";
-    button.innerHTML="";
-    button.appendChild(dogIcon);
-  });
+    //then we add an addEventListener to the button and append the icon in to the button
+    button.addEventListener("mouseenter", function() {
 
-  button.addEventListener("mouseleave", function(){
-    button.innerHTML="Woof!";
-});
-</script>
+      dogIcon.src = "dogIcon.png";
+      button.innerHTML = "";
+      button.appendChild(dogIcon);
+    });
 
- </body>
+    //for the button to go to it's original state after it was hovered, we add a 'mouseleave' event
+    button.addEventListener("mouseleave", function() {
+      button.innerHTML = "Woof!";
+    });
+
+    // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
+    let dogImg = document.createElement("img");
+    dogImg.src = "doge.png";
+    dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
+    document.body.appendChild(dogImg);
+
+  //on click, we switch between the 'display' values
+    dogIcon.addEventListener("click", function() {
+
+      if (dogImg.style.display == "none") {
+        dogImg.style.display = "block";
+      } else {
+        dogImg.style.display = "none";
+      }
+
+    });
+  </script>
+
+</body>
 
 </html>
