@@ -14,7 +14,9 @@
 <body>
 
   <button type="button" name="button" id="doge">Doggo</button>
+  <div id="catContainer">
 
+  </div>
   <script type="text/javascript">
     // the text of the button will change after the page is loaded because the script is added at the end of the body
     document.getElementById("doge").innerHTML = "Woof!";;
@@ -53,16 +55,17 @@
 
     });
 
-          var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-          let catImg = document.createElement("img");
-          catImg.src = cat[Math.floor(Math.random() * 5)];
-          catImg.id = "cat";
-          cat.width = "100px";
-          cat.height = "100px";
+    var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
 
-          document.body.appendChild(catImg);
+    let catImg = document.createElement("img");
+    catImg.src = cat[Math.floor(Math.random() * 5)];
+    catImg.position = "absolute";
+    catImg.id = "cat";
+    catImg.style.top = (Math.floor(Math.random() * 3)+1)*-100+"px";
+    catImg.style.left = Math.floor(Math.random() * 5)*100+"px";
 
-
+    var catContainer = document.getElementById('catContainer');
+    catContainer.appendChild(catImg);
 
 
   </script>
