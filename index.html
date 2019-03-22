@@ -67,7 +67,14 @@
     var catContainer = document.getElementById('catContainer');
     catContainer.appendChild(catImg);
 
+    var pos = 0;
 
+    var t = setInterval(rain, 10);
+    function rain() {
+                pos += 1;
+                catImg.style.left = pos+'px';
+                catImg.style.top = pos+'px';
+        }
   </script>
 
 </body>
