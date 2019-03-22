@@ -19,20 +19,19 @@
 
   document.getElementById("doge").innerHTML = "Woof!";
 
-  let button = document.getElementById("doge");
-  console.log(button);
+var button = document.getElementById("doge");
 
 
-
-  button.addEventListener("mouseover", function(){
+  button.addEventListener("mouseenter", function(){
     let dogIcon = document.createElement("img");
-    console.log(dogIcon);
+
     dogIcon.src= "dogIcon.png";
+    button.innerHTML="";
     button.appendChild(dogIcon);
   });
 
-button.addEventListener("mouseout", function(){
-  button.innerHtml="Woof!";
+  button.addEventListener("mouseleave", function(){
+    button.innerHTML="Woof!";
 });
 </script>
 
