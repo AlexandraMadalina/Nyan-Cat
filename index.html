@@ -42,7 +42,7 @@
     dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
     document.body.appendChild(dogImg);
 
-  //on click, we switch between the 'display' values
+    //on click, we switch between the 'display' values
     dogIcon.addEventListener("click", function() {
 
       if (dogImg.style.display == "none") {
@@ -52,6 +52,19 @@
       }
 
     });
+
+          var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+          let catImg = document.createElement("img");
+          catImg.src = cat[Math.floor(Math.random() * 5)];
+          catImg.id = "cat";
+          cat.width = "100px";
+          cat.height = "100px";
+
+          document.body.appendChild(catImg);
+
+
+
+
   </script>
 
 </body>
