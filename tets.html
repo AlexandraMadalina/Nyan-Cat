@@ -55,7 +55,20 @@
 
     });
 
-    var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+    var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+
+  var cat = new Image(100, 100);
+  cat.src = catImg[Math.floor(Math.random() * 5)];
+  cat.style.position = "absolute";
+
+  let x = Math.floor(Math.random() * 5) * 100;
+  let y = (Math.floor(Math.random() * 3) + 1) * -100;
+
+  cat.style.left = x + "px";
+  cat.style.top = y + "px";
+  var catContainer = document.getElementById('catContainer');
+  catContainer.appendChild(cat);
+    /*var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
 
 
     //  var makeRain = setInterval(randomCat, 200);
@@ -64,8 +77,8 @@
 function randomCat(){
     var catImg = document.createElement("img");
     catImg.src = cat[Math.floor(Math.random() * 5)];
-    catImg.style.position = "absolute";
-    catImg.id = "cat";
+    catImg.position = "absolute";
+    //catImg.id = "cat";
 
     let x = Math.floor(Math.random() * 5) * 100;
     let y = (Math.floor(Math.random() * 3) + 1) * -100;
@@ -101,7 +114,7 @@ function randomCat(){
         console.log('bbbbbbbbb');
       }
     }
-  }
+  }*/
   </script>
 
 </body>
