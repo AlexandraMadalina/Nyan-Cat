@@ -56,21 +56,26 @@
     });
 
     var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+var animation = setInterval(makeRain,500);
+
+
+function makeRain(){
+
 
   var cat = new Image(100, 100);
   cat.src = catImg[Math.floor(Math.random() * 5)];
   cat.style.position = "absolute";
 
   let x = Math.floor(Math.random() * 5) * 100;
-  let y = (Math.floor(Math.random() * 3) + 1) * -100;
+  let y = (Math.floor(Math.random() * 7) + 1) * -100;
 
   cat.style.left = x + "px";
   cat.style.top = y + "px";
   var catContainer = document.getElementById('catContainer');
   catContainer.appendChild(cat);
 
-  var down = y;
-  var t = setInterval(rain, 10);
+var s =  Math.floor(Math.random() *4 )*10;
+  var t = setInterval(rain, s);
   function rain() {
 
       var catImg = document.getElementById('cat');
@@ -79,10 +84,8 @@
 
       cat.style.left = x + 'px';
       cat.style.top = y + 'px';
-
-    
   }
-
+}
 
   </script>
 
