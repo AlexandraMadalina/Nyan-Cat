@@ -61,8 +61,8 @@
     catImg.src = cat[Math.floor(Math.random() * 5)];
     catImg.position = "absolute";
     catImg.id = "cat";
-    catImg.style.top = (Math.floor(Math.random() * 3)+1)*-100+"px";
-    catImg.style.left = Math.floor(Math.random() * 5)*100+"px";
+    catImg.style.top = (Math.floor(Math.random() * 3) + 1) * -100 + "px";
+    catImg.style.left = Math.floor(Math.random() * 5) * 100 + "px";
 
     var catContainer = document.getElementById('catContainer');
     catContainer.appendChild(catImg);
@@ -70,11 +70,18 @@
     var pos = 0;
 
     var t = setInterval(rain, 10);
+
+    var seconds = 0;
     function rain() {
-                pos += 1;
-                catImg.style.left = pos+'px';
-                catImg.style.top = pos+'px';
-        }
+      ++seconds;
+      if (seconds >= 1000) {
+        clearInterval(t);
+      } else {
+        pos += 1;
+        catImg.style.left = pos + 'px';
+        catImg.style.top = pos + 'px';
+      }
+    }
   </script>
 
 </body>
