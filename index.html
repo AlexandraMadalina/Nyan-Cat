@@ -14,9 +14,7 @@
 <body>
 
   <button type="button" name="button" id="doge">Doggo</button>
-  <div id="catContainer">
 
-  </div>
   <script type="text/javascript">
     // the text of the button will change after the page is loaded because the script is added at the end of the body
     document.getElementById("doge").innerHTML = "Woof!";;
@@ -39,7 +37,7 @@
     });
 
     // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
-    let dogImg = document.createElement("img");
+    var dogImg = document.createElement("img");
     dogImg.src = "doge.png";
     dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
     document.body.appendChild(dogImg);
@@ -55,167 +53,60 @@
 
     });
 
-    var cat = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
 
-
-    //  var makeRain = setInterval(randomCat, 200);
-    var makeCat = setInterval(randomCat, 200);
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-      <link rel="stylesheet" href="index.css">
-      <title>Nyan Cat</title>
-    </head>
-
-    <body>
-
-      <button type="button" name="button" id="doge">Doggo</button>
-
-      <script type="text/javascript">
-        // the text of the button will change after the page is loaded because the script is added at the end of the body
-        document.getElementById("doge").innerHTML = "Woof!";;
-
-        var button = document.getElementById("doge");
-        //first we create the icon. The style properties are already set in css file
-        let dogIcon = document.createElement("img");
-
-        //then we add an addEventListener to the button and append the icon in to the button
-        button.addEventListener("mouseenter", function() {
-
-          dogIcon.src = "dogIcon.png";
-          button.innerHTML = "";
-          button.appendChild(dogIcon);
-        });
-
-        //for the button to go to it's original state after it was hovered, we add a 'mouseleave' event
-        button.addEventListener("mouseleave", function() {
-          button.innerHTML = "Woof!";
-        });
-
-        // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
-        var dogImg = document.createElement("img");
-        dogImg.src = "doge.png";
-        dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
-        document.body.appendChild(dogImg);
-
-        //on click, we switch between the 'display' values
-        dogIcon.addEventListener("click", function() {
-
-          if (dogImg.style.display == "none") {
-            dogImg.style.display = "block";
-          } else {
-            dogImg.style.display = "none";
-          }
-
-        });
-
-
-        dogImg.addEventListener("click", function() {
+    dogImg.addEventListener("click", function() {
 
 
 
-        var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+    var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
 
 
-        var animation = setInterval(makeRain, 100);
-        var sec = 0;
+    var animation = setInterval(makeRain, 100);
+    var sec = 0;
 
 
-        function makeRain() {
+    function makeRain() {
 
-          ++sec;
+      ++sec;
 
-          if (sec >= 100) {
-            clearInterval(animation);
+      if (sec >= 100) {
+        clearInterval(animation);
 
-          } else {
-            var cat = new Image(100, 100);
-            cat.src = catImg[Math.floor(Math.random() * 5)];
-            cat.style.position = "absolute";
+      } else {
+        var cat = new Image(100, 100);
+        cat.src = catImg[Math.floor(Math.random() * 5)];
+        cat.style.position = "absolute";
 
-            let x = (Math.floor(Math.random() * 12) * 100) - 500;
-            let y = (Math.floor(Math.random() * 2) + 1) * -100;
+        let x = (Math.floor(Math.random() * 12) * 100) - 500;
+        let y = (Math.floor(Math.random() * 2) + 1) * -100;
 
-            cat.style.left = x + "px";
-            cat.style.top = y + "px";
-            var catContainer = document.getElementById('catContainer');
-            document.body.appendChild(cat);
+        cat.style.left = x + "px";
+        cat.style.top = y + "px";
+        var catContainer = document.getElementById('catContainer');
+        document.body.appendChild(cat);
 
-            var s = Math.floor(Math.random() * 3) * 10;
+        var s = Math.floor(Math.random() * 3) * 10;
 
-            var t = setInterval(rain, s);
+        var t = setInterval(rain, s);
 
-            function rain() {
-            if(sec>=100){
-            cat.style.display = "none";
-            clearInterval(rain);
-          }else{
-              var catImg = document.getElementById('cat');
-              ++x;
-              ++y;
+        function rain() {
+        if(sec>=100){
+        cat.style.display = "none";
+        clearInterval(rain);
+      }else{
+          var catImg = document.getElementById('cat');
+          ++x;
+          ++y;
 
-              cat.style.left = x + 'px';
-              cat.style.top = y + 'px';
-            }
-
-            }
-          }
+          cat.style.left = x + 'px';
+          cat.style.top = y + 'px';
         }
 
-        });
-      </script>
-
-    </body>
-
-    </html>
-
-
-    var catImg = document.createElement("img");
-    catImg.src = cat[Math.floor(Math.random() * 5)];
-    catImg.style.position = "absolute";
-    catImg.id = "cat";
-
-    let x = Math.floor(Math.random() * 5) * 100;
-    let y = (Math.floor(Math.random() * 3) + 1) * -100;
-
-
-
-    catImg.style.left = x + "px";
-    catImg.style.top = y + "px";
-
-
-    var catContainer = document.getElementById('catContainer');
-    catContainer.appendChild(catImg);
-    console.log('aaaaaaaaa');
-    //  }
-
-
-
-    //function animate(x, y) {
-    var down = y;
-    var t = setInterval(rain, 10);
-
-    function rain() {
-      ++down;
-      if (down >= 800) {
-        clearInterval(t);
-      } else {
-        var catImg = document.getElementById('cat');
-        ++x;
-        ++y;
-
-        catImg.style.left = x + 'px';
-        catImg.style.top = y + 'px';
-        console.log('bbbbbbbbb');
+        }
       }
     }
-  }
+
+    });
   </script>
 
 </body>
