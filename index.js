@@ -38,17 +38,17 @@ dogIcon.addEventListener("click", function() {
 //Start of animation
 
 //we add the click event to dog image to make the animation start when clicking the image
-  dogImg.addEventListener("click", function() {
-
-
-  // this arry will give 5 image options
-  var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+dogImg.addEventListener("click", function() {
 
   // first we are goin to create a new picture every 100 milliseconds
   var animation = setInterval(makeRain, 100);
 
   // var sec will count how many times we have created a new image
   var sec = 0;
+
+  // this arry will give 5 image options
+  var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+
 
   function makeRain() {
 
@@ -65,22 +65,22 @@ dogIcon.addEventListener("click", function() {
 
       // in order for the image to start descending from the position where it was created, we must save the original coordinates. The pictures will be created at a random position above the viewport.
 
-      let x = (Math.floor(Math.random() * 12) * 100) - 500;// Math.floor will give a number between 0 and 11. I multipyed by 100 so dat the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
+      var x = (Math.floor(Math.random() * 12) * 100) - 500; // Math.floor will give a number between 0 and 11. I multipyed by 100 so dat the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
 
-    let y = Math.floor(Math.random() * 2) * -100; //the top property will always have a negative value
+      var y = Math.floor(Math.random() * 2) * -100; //the top property will always have a negative value
 
       cat.style.left = x + "px";
       cat.style.top = y + "px";
 
       document.body.appendChild(cat);
 
-      var s = Math.floor(Math.random() * 3) * 10;// pictures will have random speed
+      var s = Math.floor(Math.random() * 3) * 10; // pictures will have random speed
 
       var t = setInterval(rain, s);
 
       function rain() {
         if (sec >= 100) {
-          cat.style.display = "none";// if we do not hide images after the animation has been stopped, the images will freeze, but will be visible
+          cat.style.display = "none"; // if we do not hide images after the animation has been stopped, the images will freeze, but will be visible
           clearInterval(rain);
         } else {
           var catImg = document.getElementById('cat');
@@ -90,9 +90,7 @@ dogIcon.addEventListener("click", function() {
           cat.style.left = x + 'px';
           cat.style.top = y + 'px';
         }
-
       }
     }
   }
-
 });
