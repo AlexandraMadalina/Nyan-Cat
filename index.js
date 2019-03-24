@@ -65,7 +65,7 @@ dogImg.addEventListener("click", function() {
 
       // in order for the image to start descending from the position where it was created, we must save the original coordinates. The pictures will be created at a random position above the viewport.
 
-      var x = (Math.floor(Math.random() * 12) * 100) - 500; // Math.floor will give a number between 0 and 11. I multipyed by 100 so dat the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
+      var x = (Math.floor(Math.random() * 12) * 100) - 500; // Math.floor will give a number between 0 and 11. I multipyed by 100 so that the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
 
       var y = Math.floor(Math.random() * 2) * -100; //the top property will always have a negative value
 
