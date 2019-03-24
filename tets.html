@@ -14,9 +14,7 @@
 <body>
 
   <button type="button" name="button" id="doge">Doggo</button>
-  <div id="catContainer">
 
-  </div>
   <script type="text/javascript">
     // the text of the button will change after the page is loaded because the script is added at the end of the body
     document.getElementById("doge").innerHTML = "Woof!";;
@@ -39,7 +37,7 @@
     });
 
     // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
-    let dogImg = document.createElement("img");
+    var dogImg = document.createElement("img");
     dogImg.src = "doge.png";
     dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
     document.body.appendChild(dogImg);
@@ -55,38 +53,60 @@
 
     });
 
+
+    dogImg.addEventListener("click", function() {
+
+
+
     var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-var animation = setInterval(makeRain,500);
 
 
-function makeRain(){
+    var animation = setInterval(makeRain, 100);
+    var sec = 0;
 
 
-  var cat = new Image(100, 100);
-  cat.src = catImg[Math.floor(Math.random() * 5)];
-  cat.style.position = "absolute";
+    function makeRain() {
 
-  let x = Math.floor(Math.random() * 5) * 100;
-  let y = (Math.floor(Math.random() * 7) + 1) * -100;
+      ++sec;
 
-  cat.style.left = x + "px";
-  cat.style.top = y + "px";
-  var catContainer = document.getElementById('catContainer');
-  catContainer.appendChild(cat);
+      if (sec >= 100) {
+        clearInterval(animation);
 
-var s =  Math.floor(Math.random() *4 )*10;
-  var t = setInterval(rain, s);
-  function rain() {
+      } else {
+        var cat = new Image(100, 100);
+        cat.src = catImg[Math.floor(Math.random() * 5)];
+        cat.style.position = "absolute";
 
-      var catImg = document.getElementById('cat');
-      ++x;
-      ++y;
+        let x = (Math.floor(Math.random() * 12) * 100) - 500;
+        let y = (Math.floor(Math.random() * 2) + 1) * -100;
 
-      cat.style.left = x + 'px';
-      cat.style.top = y + 'px';
-  }
-}
+        cat.style.left = x + "px";
+        cat.style.top = y + "px";
+        var catContainer = document.getElementById('catContainer');
+        document.body.appendChild(cat);
 
+        var s = Math.floor(Math.random() * 3) * 10;
+
+        var t = setInterval(rain, s);
+
+        function rain() {
+        if(sec>=100){
+        cat.style.display = "none";
+        clearInterval(rain);
+      }else{
+          var catImg = document.getElementById('cat');
+          ++x;
+          ++y;
+
+          cat.style.left = x + 'px';
+          cat.style.top = y + 'px';
+        }
+
+        }
+      }
+    }
+
+    });
   </script>
 
 </body>
