@@ -42,13 +42,17 @@ dogImg.addEventListener("click", function() {
 
 
 
-  //change background
+  //change background and hide all elements
   document.body.style.backgroundImage = "url('background.png')";
+  dogImg.style.display = "none";
+  dogIcon.style.display = "none";
+  button.style.display = "none";
 
-dogImg.style.display = "none";
-dogIcon.style.display = "none";
-button.style.display = "none";
-  // first we are goin to create a new picture every 100 milliseconds
+
+    var nyanSong = new Audio('nyan.mp3');//create a audio element
+    document.body.appendChild(nyanSong);
+
+  //create a new picture every 100 milliseconds
   var animation = setInterval(makeRain, 100);
 
 
@@ -58,6 +62,7 @@ button.style.display = "none";
 
   // var sec will count how many times we have created a new image
   var sec = 0;
+
   function makeRain() {
 
     ++sec;
@@ -65,12 +70,14 @@ button.style.display = "none";
     //we want to stop making images after 10 sec. If a image gets created every 100 milliseconds we need to repeat this process 100 times to have a total of 10 seconds (1 sec = 1000 milliseconds)
     if (sec >= 100) {
       clearInterval(animation);
-        document.body.style.backgroundImage = "";
-        dogImg.style.display = "block";
-        dogIcon.style.display = "block";
-        button.style.display = "block";
+      document.body.style.backgroundImage = "";
+      dogImg.style.display = "block";
+      dogIcon.style.display = "block";
+      button.style.display = "block";
+      nyanSong.pause();
 
     } else {
+      nyanSong.play();
       var cat = new Image(100, 100);
       cat.src = catImg[Math.floor(Math.random() * 5)]; //we'll choose a random picture
       cat.style.position = "absolute";
