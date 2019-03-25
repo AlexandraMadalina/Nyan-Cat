@@ -84,7 +84,7 @@ dogImg.addEventListener("click", function() {
 
       // in order for the image to start descending from the position where it was created, we must save the original coordinates. The pictures will be created at a random position above the viewport.
 
-      var x = (Math.floor(Math.random() * 12) * 100) - 500; // Math.floor will give a number between 0 and 11. I multipyed by 100 so that the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
+      var x = (Math.floor(Math.random() * 20) * 100) - 500; // Math.floor will give a number between 0 and 19. I multipyed by 100 so that the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
 
       var y = Math.floor(Math.random() * 2) * -100; //the top property will always have a negative value
 
@@ -93,10 +93,9 @@ dogImg.addEventListener("click", function() {
 
       document.body.appendChild(cat);
 
-      var s = Math.floor(Math.random() * 3) * 10; // pictures will have random speed
+      var s = Math.floor(Math.random() * 3)+1 * 10; // pictures will have random speed
 
       var t = setInterval(rain, s);
-
       function rain() {
         if (sec >= 100) {
           cat.style.display = "none"; // if we do not hide images after the animation has been stopped, the images will freeze, but will be visible
@@ -110,6 +109,8 @@ dogImg.addEventListener("click", function() {
           cat.style.top = y + 'px';
         }
       }
+
     }
   }
+
 });
