@@ -1,9 +1,9 @@
 // the text of the button will change after the page is loaded because the script is added at the end of the body
-document.getElementById("doge").innerHTML = "Woof!";;
+document.getElementById("doge").innerHTML = "Woof!";
 
 var button = document.getElementById("doge");
 //first we create the icon. The style properties are already set in css file
-let dogIcon = document.createElement("img");
+var dogIcon = document.createElement("img");
 
 //then we add an addEventListener to the button and append the icon in to the button
 button.addEventListener("mouseenter", function() {
@@ -21,7 +21,7 @@ button.addEventListener("mouseleave", function() {
 // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
 var dogImg = document.createElement("img");
 dogImg.src = "doge.png";
-dogImg.style.display = "none"; // we set the 'display' property to 'none' sodat it won't be visible until we click the button
+dogImg.style.display = "none"; // we set the 'display' property to 'none' so it won't be visible until we click the button
 document.body.appendChild(dogImg);
 
 //on click, we switch between the 'display' values
@@ -40,16 +40,24 @@ dogIcon.addEventListener("click", function() {
 //we add the click event to dog image to make the animation start when clicking the image
 dogImg.addEventListener("click", function() {
 
+
+
+  //change background
+  document.body.style.backgroundImage = "url('background.png')";
+
+dogImg.style.display = "none";
+dogIcon.style.display = "none";
+button.style.display = "none";
   // first we are goin to create a new picture every 100 milliseconds
   var animation = setInterval(makeRain, 100);
 
-  // var sec will count how many times we have created a new image
-  var sec = 0;
+
 
   // this arry will give 5 image options
   var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
 
-
+  // var sec will count how many times we have created a new image
+  var sec = 0;
   function makeRain() {
 
     ++sec;
@@ -57,6 +65,10 @@ dogImg.addEventListener("click", function() {
     //we want to stop making images after 10 sec. If a image gets created every 100 milliseconds we need to repeat this process 100 times to have a total of 10 seconds (1 sec = 1000 milliseconds)
     if (sec >= 100) {
       clearInterval(animation);
+        document.body.style.backgroundImage = "";
+        dogImg.style.display = "block";
+        dogIcon.style.display = "block";
+        button.style.display = "block";
 
     } else {
       var cat = new Image(100, 100);
