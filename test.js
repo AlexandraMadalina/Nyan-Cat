@@ -39,15 +39,12 @@ dogIcon.addEventListener("click", function() {
 
 
 dogImg.addEventListener("click", function() {
-  for(let i = 0; i>=50;++i){
+
 var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
   var nyanSong = new Audio('nyan.mp3');
   document.body.appendChild(nyanSong);
   var cat = new Image(100, 100);
   animate();
-
-
-
 
 function animate(){
 
@@ -69,8 +66,8 @@ function move(){
 function animate(){
 
 if(left>=1000|| top>=1000){
-clearInterval(id);
-return;
+clearInterval(t);
+
 }
 
 ++left;
@@ -80,7 +77,7 @@ cat.style.top = top + "px";
 }
 
 }
-}
+
 });
 /*var arrCat = [];
 var x = 0;

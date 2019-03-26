@@ -45,41 +45,38 @@ function createCat() {
   var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
   var cat = new Image(100, 100);
   cat.src = catImg[Math.floor(Math.random() * 5)];
-  cat.style.position = "absolute";
+  cat.style.position = "fixed";
   x = (Math.floor(Math.random() * 8) * 100) - 500;
   y = (Math.floor(Math.random() * 3) + 1) * -100;
   cat.style.left = x + "px";
   cat.style.top = y + "px";
   document.body.appendChild(cat);
-  moveCat(cat);
+  cat.classList.add("cats");
+}
+
+requestAnimationFrame(moveAllCats);
+
+
+
+function moveAllCats(){
+  var cats = document.getElementsByClassName("cats");
+  for(let i=0; i<cats.length; ++i){
+    moveCat(cats[i]);
+  }
+
+  requestAnimationFrame(moveAllCats);
 }
 
 function moveCat(cat) {
 
-  var left = parseInt(cat.style.left, 10);
-  var top = parseInt(cat.style.top, 10);
-  console.log(top);
-  var addTop = top;
-  var addLeft = left;
+var oldX = parseInt(cat.style.left, 10);
+var oldY = parseInt(cat.style.top, 10);
+oldX +=3;
+oldY +=3;
+cat.style.left = oldX + "px";
+cat.style.top = oldY + "px";
+if(oldY > 1100){
+cat.body.removeChild(cat);
 
-  var t = setInterval(fall(addTop,addLeft), 100);
-  var start = Date.now();
-
-
-  function fall(addTop,addLeft){
-
-    var timePassed = Date.now() - start;
-    if (timePassed > 10000) {
-      clearInterval(t);
-    }
-    ++addTop;
-    ++addLeft;
-      console.log(addTop);
-    cat.style.top = addTop + 'px';
-    cat.style.top = addLeft + 'px';
-    if (addTop > 100){
-      cat.style.top = top;
-      cat.style.left = left;
-    }
-  }
+}
 }
