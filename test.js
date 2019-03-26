@@ -8,7 +8,7 @@ var dogIcon = document.createElement("img");
 //then we add an addEventListener to the button and append the icon in to the button
 button.addEventListener("mouseenter", function() {
 
-  dogIcon.src = "dogIcon.png";
+  dogIcon.src = "img/dogIcon.png";
   button.innerHTML = "";
   button.appendChild(dogIcon);
 });
@@ -20,7 +20,7 @@ button.addEventListener("mouseleave", function() {
 
 // to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
 var dogImg = document.createElement("img");
-dogImg.src = "doge.png";
+dogImg.src = "img/doge.png";
 dogImg.style.display = "none"; // we set the 'display' property to 'none' so it won't be visible until we click the button
 document.body.appendChild(dogImg);
 
@@ -37,182 +37,80 @@ dogIcon.addEventListener("click", function() {
 
 //Start of animation
 
-dogImg.addEventListener("click", function() {
-  let start = Date.now();
-  var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-  var nyanSong = new Audio('nyan.mp3');
-  document.body.appendChild(nyanSong);
-
-<<<<<<< HEAD
+//we add the click event to dog image to make the animation start when clicking the image
 dogImg.addEventListener("click", function() {
 
-var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-  var nyanSong = new Audio('nyan.mp3');
-  document.body.appendChild(nyanSong);
-  var cat = new Image(100, 100);
-  animate();
-
-function animate(){
-
-cat.src = catImg[Math.floor(Math.random() * 5)];
-cat.style.position = "absolute";
-x = (Math.floor(Math.random() * 8) * 100) - 500;
-y =(Math.floor(Math.random() * 3)+1)*-100;
-cat.style.left = x + "%";
-cat.style.top = y + "%";
-document.body.appendChild(cat);
-move();
-}
-
-function move(){
-  var left = parseInt(cat.style.left, 10);
-  var  top = parseInt(cat.style.top, 10);
-
-  var t = setInterval(animate, 5);
-function animate(){
-
-if(left>=1000|| top>=1000){
-clearInterval(t);
-
-}
-
-++left;
-++top;
-cat.style.left = left + "px";
-cat.style.top = top + "px";
-}
-
-}
-
-});
-/*var arrCat = [];
-var x = 0;
-var y = 0;
 
 
-for (var i = 0; i < 20; ++i) {
-  var cat = new Image(100, 100);
-  cat.src = catImg[Math.floor(Math.random() * 5)];
-  cat.style.position = "absolute";
-  x = (Math.floor(Math.random() * 8) * 100) - 500;
-  y =(Math.floor(Math.random() * 3)+1)*-100;
-  cat.style.left = x + "%";
-  cat.style.top = y + "%";
-  arrCat.push(cat);
-  document.body.appendChild(arrCat[i]);
-  console.log(y);
+  //change background and hide all elements
+  document.body.style.backgroundImage = "url('img/background.png')";
+  dogImg.style.display = "none";
+  dogIcon.style.display = "none";
+  button.style.display = "none";
 
-}
 
-for (var i = 0; i < 20; ++i)
-  move();
-function move(){
+    var nyanSong = new Audio('nyan.mp3');//create a audio element
+    document.body.appendChild(nyanSong);
 
-var t = setInterval(animate, 100);
-var left = parseInt(cat.style.left, 10);
-var  top = parseInt(cat.style.top, 10);
-function animate() {
-  ++left;
-  ++top;
-  cat.style.left = left + "%";
-  cat.style.top = top + "%";
-}
-=======
-  var arrCat = [];
-  var x = 0;
-  var y = 0;
+  //create a new picture every 100 milliseconds
+  var animation = setInterval(makeRain, 100);
 
-  for (var i = 0; i < 20; ++i) {
-    var cat = new Image(100, 100);
-    cat.src = catImg[Math.floor(Math.random() * 5)];
-    cat.style.position = "absolute";
-    x = (Math.floor(Math.random() * 20) * 100) - 500;
-    y = Math.floor(Math.random() * 2) * -100;
-    cat.style.left = x + "px";
-    cat.style.top = y + "px";
-    arrCat.push(cat);
-    document.body.appendChild(arrCat[i]);
-  }
 
-  var timer = setInterval(animate, 20);
 
-  function animate() {
+  // this arry will give 5 image options
+  var catImg = ["img/cat1.png", "img/cat2.png", "img/cat3.png", "img/cat4.png", "img/cat5.png"];
 
-    let timePassed = Date.now() - start;
-    var lef;
-    var top;
-    for (var i = 0; i < 20; ++i) {
-      left = parseInt(arrCat[i].style.left, 10);
-      top = parseInt(arrCat[i].style.top, 10);
-      //s = Math.floor(Math.random() *3);
-      arrCat[i].style.left = left + 1 + (1 / i ) + "px";
-      arrCat[i].style.top = top + 1 + (1 / i) + "px";
-    }
+  // var sec will count how many times we have created a new image
+  var sec = 0;
 
-    if (timePassed >= 10000) {
-      clearInterval(timer);
-      return;
+  function makeRain() {
+
+    ++sec;
+
+    //we want to stop making images after 10 sec. If a image gets created every 100 milliseconds we need to repeat this process 100 times to have a total of 10 seconds (1 sec = 1000 milliseconds)
+    if (sec >= 100) {
+      clearInterval(animation);
+      document.body.style.backgroundImage = "";
+      dogImg.style.display = "block";
+      dogIcon.style.display = "block";
+      button.style.display = "block";
+      nyanSong.pause();
+
+    } else {
+      nyanSong.play();
+      var cat = new Image(100, 100);
+      cat.src = catImg[Math.floor(Math.random() * 5)]; //we'll choose a random picture
+      cat.style.position = "absolute";
+
+      // in order for the image to start descending from the position where it was created, we must save the original coordinates. The pictures will be created at a random position above the viewport.
+
+      var x = (Math.floor(Math.random() * 20) * 100) - 500; // Math.floor will give a number between 0 and 19. I multipyed by 100 so that the picture wont't be to crowded, and extract 500 so dat we will also get negative values. This way well cover more space and the picture will be more dispers
+
+      var y = Math.floor(Math.random() * 2) * -100; //the top property will always have a negative value
+
+      cat.style.left = x + "px";
+      cat.style.top = y + "px";
+
+      document.body.appendChild(cat);
+
+      var s = Math.floor(Math.random() * 3)+1 * 10; // pictures will have random speed
+
+      var t = setInterval(rain, s);
+      function rain() {
+        if (sec >= 100) {
+          cat.style.display = "none"; // if we do not hide images after the animation has been stopped, the images will freeze, but will be visible
+          clearInterval(rain);
+        } else {
+          var catImg = document.getElementById('cat');
+          ++x;
+          ++y;
+
+          cat.style.left = x + 'px';
+          cat.style.top = y + 'px';
+        }
+      }
+
     }
   }
-});
-/*
-
-}
-dogImg.addEventListener("click", function() {
-
-let start = Date.now();
-
-var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-
-
-let timer = setInterval(function() {
-  // how much time passed from the start?
-  let timePassed = Date.now() - start;
-
-  if (timePassed >= 2000) {
-    clearInterval(timer); // finish the animation after 2 seconds
-    return;
-  }
-
-  // draw the animation at the moment timePassed
-  animate(timePassed);
-
-}, 20);
 
 });
-
-function animate(timePassed){
-
-cat.style.left = timePassed / 5 + 'px';
-
-}
-
-
-
-function createCar(){
-
-
-  return cat;
-}
-let start = Date.now(); // remember start time
-
-let timer = setInterval(function() {
-  // how much time passed from the start?
-  let timePassed = Date.now() - start;
-
-  if (timePassed >= 2000) {
-    clearInterval(timer); // finish the animation after 2 seconds
-    return;
-  }
-
-  // draw the animation at the moment timePassed
-  draw(timePassed);
-
-}, 20);
-
-// as timePassed goes from 0 to 2000
-// left gets values from 0px to 400px
-function draw(timePassed) {
-  train.style.left = timePassed / 5 + 'px';
->>>>>>> 253bcf43e70587c3429cf2224ab3906478ccbb28
-}*/
