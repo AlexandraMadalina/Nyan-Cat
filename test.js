@@ -37,7 +37,13 @@ dogIcon.addEventListener("click", function() {
 
 //Start of animation
 
+dogImg.addEventListener("click", function() {
+  let start = Date.now();
+  var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+  var nyanSong = new Audio('nyan.mp3');
+  document.body.appendChild(nyanSong);
 
+<<<<<<< HEAD
 dogImg.addEventListener("click", function() {
 
 var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
@@ -111,4 +117,102 @@ function animate() {
   cat.style.left = left + "%";
   cat.style.top = top + "%";
 }
+=======
+  var arrCat = [];
+  var x = 0;
+  var y = 0;
+
+  for (var i = 0; i < 20; ++i) {
+    var cat = new Image(100, 100);
+    cat.src = catImg[Math.floor(Math.random() * 5)];
+    cat.style.position = "absolute";
+    x = (Math.floor(Math.random() * 20) * 100) - 500;
+    y = Math.floor(Math.random() * 2) * -100;
+    cat.style.left = x + "px";
+    cat.style.top = y + "px";
+    arrCat.push(cat);
+    document.body.appendChild(arrCat[i]);
+  }
+
+  var timer = setInterval(animate, 20);
+
+  function animate() {
+
+    let timePassed = Date.now() - start;
+    var lef;
+    var top;
+    for (var i = 0; i < 20; ++i) {
+      left = parseInt(arrCat[i].style.left, 10);
+      top = parseInt(arrCat[i].style.top, 10);
+      //s = Math.floor(Math.random() *3);
+      arrCat[i].style.left = left + 1 + (1 / i ) + "px";
+      arrCat[i].style.top = top + 1 + (1 / i) + "px";
+    }
+
+    if (timePassed >= 10000) {
+      clearInterval(timer);
+      return;
+    }
+  }
+});
+/*
+
+}
+dogImg.addEventListener("click", function() {
+
+let start = Date.now();
+
+var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
+
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 2000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+  animate(timePassed);
+
+}, 20);
+
+});
+
+function animate(timePassed){
+
+cat.style.left = timePassed / 5 + 'px';
+
+}
+
+
+
+function createCar(){
+
+
+  return cat;
+}
+let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 2000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+  draw(timePassed);
+
+}, 20);
+
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function draw(timePassed) {
+  train.style.left = timePassed / 5 + 'px';
+>>>>>>> 253bcf43e70587c3429cf2224ab3906478ccbb28
 }*/
