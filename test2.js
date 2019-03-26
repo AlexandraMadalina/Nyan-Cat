@@ -35,83 +35,51 @@ dogIcon.addEventListener("click", function() {
 
 });
 
-//Start of animation
+
+// animation
 
 
-dogImg.addEventListener("click", function() {
-  for(let i = 0; i>=50;++i){
-var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
-  var nyanSong = new Audio('nyan.mp3');
-  document.body.appendChild(nyanSong);
-  var cat = new Image(100, 100);
-  animate();
+dogImg.addEventListener("click", createCat);
 
-
-
-
-function animate(){
-
-cat.src = catImg[Math.floor(Math.random() * 5)];
-cat.style.position = "absolute";
-x = (Math.floor(Math.random() * 8) * 100) - 500;
-y =(Math.floor(Math.random() * 3)+1)*-100;
-cat.style.left = x + "%";
-cat.style.top = y + "%";
-document.body.appendChild(cat);
-move();
-}
-
-function move(){
-  var left = parseInt(cat.style.left, 10);
-  var  top = parseInt(cat.style.top, 10);
-
-  var t = setInterval(animate, 5);
-function animate(){
-
-if(left>=1000|| top>=1000){
-clearInterval(id);
-return;
-}
-
-++left;
-++top;
-cat.style.left = left + "px";
-cat.style.top = top + "px";
-}
-
-}
-}
-});
-/*var arrCat = [];
-var x = 0;
-var y = 0;
-
-
-for (var i = 0; i < 20; ++i) {
+function createCat() {
+  var catImg = ["cat1.png", "cat2.png", "cat3.png", "cat4.png", "cat5.png"];
   var cat = new Image(100, 100);
   cat.src = catImg[Math.floor(Math.random() * 5)];
   cat.style.position = "absolute";
   x = (Math.floor(Math.random() * 8) * 100) - 500;
-  y =(Math.floor(Math.random() * 3)+1)*-100;
-  cat.style.left = x + "%";
-  cat.style.top = y + "%";
-  arrCat.push(cat);
-  document.body.appendChild(arrCat[i]);
-  console.log(y);
-
+  y = (Math.floor(Math.random() * 3) + 1) * -100;
+  cat.style.left = x + "px";
+  cat.style.top = y + "px";
+  document.body.appendChild(cat);
+  moveCat(cat);
 }
 
-for (var i = 0; i < 20; ++i)
-  move();
-function move(){
+function moveCat(cat) {
 
-var t = setInterval(animate, 100);
-var left = parseInt(cat.style.left, 10);
-var  top = parseInt(cat.style.top, 10);
-function animate() {
-  ++left;
-  ++top;
-  cat.style.left = left + "%";
-  cat.style.top = top + "%";
+  var left = parseInt(cat.style.left, 10);
+  var top = parseInt(cat.style.top, 10);
+  console.log(top);
+  var addTop = top;
+  var addLeft = left;
+
+  var t = setInterval(fall(addTop,addLeft), 100);
+  var start = Date.now();
+
+
+  function fall(addTop,addLeft){
+
+    var timePassed = Date.now() - start;
+    if (timePassed > 10000) {
+      clearInterval(t);
+    }
+    ++addTop;
+    ++addLeft;
+      console.log(addTop);
+    cat.style.top = addTop + 'px';
+    cat.style.top = addLeft + 'px';
+    if (addTop > 100){
+      cat.style.top = top;
+      cat.style.left = left;
+    }
+  }
 }
-}*/
