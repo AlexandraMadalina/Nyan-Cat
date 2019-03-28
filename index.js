@@ -78,5 +78,6 @@ oldX +=3;
 oldY +=3;
 cat.style.left = oldX + "px";
 cat.style.top = oldY + "px";
+cat.style.transform = "rotate(90deg)";
 
 }
