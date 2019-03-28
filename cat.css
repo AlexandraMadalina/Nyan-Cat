@@ -1,0 +1,43 @@
+body{
+    overflow: hidden;
+  }
+
+  button{
+    background-color:#f796fb;
+    margin:30px auto;
+    display:block;
+    width:200px;
+    height: 150px;
+  
+  }
+
+ 
+  .nyan-cat-start{
+    width: 100px;
+    height: 100px;
+    left: 0vw;
+    top: -20vh;
+    position:absolute;
+    -webkit-transition-property: transform -webkit-transform;
+    -webkit-transition-duration: 0s;
+    -webkit-transition-timing-function: linear;
+    transition-property: transform -webkit-transform;
+    transition-duration: 0s;
+    transition-timing-function:linear;
+  }
+ 
+  .nyan-cat-end{
+    width: 100px;
+    height: 100px;
+    transform:rotate(120deg);
+    -webkit-transform:rotate(120deg);
+    transform:translate(100vw, 100vh);
+    -webkit-transform:translate(100vw, 100vh);
+    position: absolute;
+    -webkit-transition-property:  transform -webkit-transform;
+    -webkit-transition-duration: 4s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-property: transform -webkit-transform;
+    transition-duration: 4s;
+    transition-timing-function: ease-in-out;
+  }

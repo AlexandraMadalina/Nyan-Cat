@@ -17,3 +17,20 @@ button{
    background-color: blue;
    position:relative;
  }
+
+ .nyan-cat{
+  
+   max-width: 100px;
+   max-height: 100px;
+ }
+
+ .nyan-cat-start{
+   left:0;
+   top:0;
+ }
+
+ .nyan-cat-end{
+   left: 100vw;
+   top:100vh;
+ }
+
