@@ -25,6 +25,9 @@ button{
    height: 100px;
  }
 
+ .noMoreCats{
+   display: none;
+ }
 
 
  

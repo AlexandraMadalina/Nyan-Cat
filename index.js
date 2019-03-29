@@ -8,6 +8,11 @@ button.addEventListener("click", createCat);
 button.addEventListener("click", createCat);
 
 function createCat() {
+
+  button.style.display = "none";
+  document.body.style.backgroundImage = "url('img/background.png')";
+  var nyanSong = document.createElement('nyan.mp3');
+  document.body.appendChild(nyanSong);
   var numberOfCats = Math.floor(Math.random() * 50);
   for(let i = 0; i <= numberOfCats; ++i){
   var catImg = ["img/cat1.png", "img/cat2.png", "img/cat3.png", "img/cat4.png", "img/cat5.png"];
@@ -48,8 +53,26 @@ animationLife = requestAnimationFrame(moveAllCats);
 requestAnimationFrame(moveAllCats);
 
 
-setTimeout(function(){ // cancel requestAnimationFrame after 2 seconds
-    cancelAnimationFrame(animationLife)
+setTimeout(function(){ 
+  cancelAnimationFrame(animationLife);
+  button.style.display = "block";
+  document.body.style.backgroundImage = "";
+  //nyanSong.pause();
+  var flyingCats = document.getElementsByClassName("cats");
+  console.log(flyingCats);
+
+  while (flyingCats[0]) {
+    flyingCats[0].remove();
+  }
+
+  /*for(let i=0; i<flyingCats.length; i++){
+    console.log(i);
+    flyingCats[i].className = "noMoreCats";
+  }
+  var noCats = document.getElementsByClassName("noMoreCats");
+  console.log(noCats);
+   */
+
 }, 10000);
 
 
