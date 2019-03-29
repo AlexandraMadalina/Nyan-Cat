@@ -1,64 +1,38 @@
-document.getElementById("doge").innerHTML = "Woof!";
-
-var button = document.getElementById("doge");
-//first we create the icon. The style properties are already set in css file
-var dogIcon = document.createElement("img");
-
-//then we add an addEventListener to the button and append the icon in to the button
-button.addEventListener("mouseenter", function() {
-
-  dogIcon.src = "img/dogIcon.png";
-  button.innerHTML = "";
-  button.appendChild(dogIcon);
-});
-
-//for the button to go to it's original state after it was hovered, we add a 'mouseleave' event
-button.addEventListener("mouseleave", function() {
-  button.innerHTML = "Woof!";
-});
-
-// to avoid adding more than one image when we click the button, we create and append the image before the 'click' event
-var dogImg = document.createElement("img");
-dogImg.src = "img/doge.png";
-dogImg.style.display = "none"; // we set the 'display' property to 'none' so it won't be visible until we click the button
-document.body.appendChild(dogImg);
-
-//on click, we switch between the 'display' values
-dogIcon.addEventListener("click", function() {
-
-  if (dogImg.style.display == "none") {
-    dogImg.style.display = "block";
-  } else {
-    dogImg.style.display = "none";
-  }
-
-});
+var button = document.getElementById("clickForMiaw");
+button.addEventListener("click", createCat);
 
 
 // animation
 
 
-dogImg.addEventListener("click", createCat);
+button.addEventListener("click", createCat);
 
 function createCat() {
   var numberOfCats = Math.floor(Math.random() * 50);
-  console.log(numberOfCats);
   for(let i = 0; i <= numberOfCats; ++i){
   var catImg = ["img/cat1.png", "img/cat2.png", "img/cat3.png", "img/cat4.png", "img/cat5.png"];
-  var cat = new Image(100, 100);
+  var cat = document.createElement("img");
   cat.src = catImg[Math.floor(Math.random() * 5)];
   cat.style.position = "fixed";
-  var x = (Math.floor(Math.random() * 8) * 100) - 500;
-  var y = (Math.floor(Math.random() * 3) + 1) * -100;
-  cat.style.left = x + "px";
-  cat.style.top = y + "px";
+  setStartPosition(cat)
+  var speed = (Math.floor(Math.random() * 2)+1);
+  cat.speed = speed;
+  var angle = (Math.floor(Math.random() * 5)+1)*10;
+  cat.angle = angle;
   document.body.appendChild(cat);
   cat.classList.add("cats");
   }
 }
 
-requestAnimationFrame(moveAllCats);
+function setStartPosition(obj){
+  var x = (Math.floor(Math.random() * 5) * 10) - 30;
+  var y = (Math.floor(Math.random() * 2) *20) -10;
+  obj.style.left = x + "vw";
+  obj.style.top = y + "vh";
+}
 
+
+var animationLife
 
 
 function moveAllCats(){
@@ -66,18 +40,33 @@ function moveAllCats(){
   for(let i=0; i<cats.length; ++i){
     moveCat(cats[i]);
   }
-
-  requestAnimationFrame(moveAllCats);
+animationLife = requestAnimationFrame(moveAllCats);
+ 
 }
 
-function moveCat(cat) {
 
-var oldX = parseInt(cat.style.left, 10);
-var oldY = parseInt(cat.style.top, 10);
-oldX +=3;
-oldY +=3;
-cat.style.left = oldX + "px";
-cat.style.top = oldY + "px";
-cat.style.transform = "rotate(90deg)";
+requestAnimationFrame(moveAllCats);
+
+
+setTimeout(function(){ // cancel requestAnimationFrame after 2 seconds
+    cancelAnimationFrame(animationLife)
+}, 10000);
+
+
+function moveCat(cat) {
+  
+    var oldX = parseInt(cat.style.left, 10);
+    var oldY = parseInt(cat.style.top, 10);
+    oldX +=cat.speed;
+    oldY +=cat.speed;
+    cat.style.left = oldX + "vw";
+    cat.style.top = oldY + "vh";
+    var rotate = 0;
+    rotate += cat.angle;
+    cat.style.transform = "rotate(" + rotate + "deg)";
+    if(oldY > 100){
+    setStartPosition(cat);
+    }
+  
 
 }

@@ -3,10 +3,11 @@ body{
   overflow: hidden;
 }
 button{
-  background-color:#d69f51;
-  margin:30px auto;
-  display:block;
-  max-width: width:200px;
+  background-color:#f796fb;
+    margin:30px auto;
+    display:block;
+    width:200px;
+    height: 150px;
 
 }
 
@@ -18,19 +19,13 @@ button{
    position:relative;
  }
 
- .nyan-cat{
+ .cats{
   
-   max-width: 100px;
-   max-height: 100px;
+   width: 100px;
+   height: 100px;
  }
 
- .nyan-cat-start{
-   left:0;
-   top:0;
- }
 
- .nyan-cat-end{
-   left: 100vw;
-   top:100vh;
- }
+
+ 
 
