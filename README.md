@@ -25,4 +25,4 @@ Have you ever heard of [Nyan Cat](https://www.google.com/search?q=nyan+cat&oq=ny
 
 (this will make it look more like it's raining nyan cats)
 
-## [Results] (https://alexandramadalina.github.io/Nyan-Cat/)
+## [Results](https://alexandramadalina.github.io/Nyan-Cat/)
