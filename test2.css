@@ -1,0 +1,22 @@
+body{
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+  button{
+    background-color:#f796fb;
+      margin:30px auto;
+      display:block;
+      width:200px;
+      height: 150px;
+  
+  }
+  
+  
+ 
+  .nyan-cat{
+      width: 100px;
+      height: 100px;
+  }
