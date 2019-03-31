@@ -14,7 +14,7 @@ function createCat(){
 
    
 function updateTransition() {
-  
+ 
   var cat = document.querySelector("img.nyan-cat-start");
    
   if (cat) {
@@ -27,4 +27,5 @@ function updateTransition() {
   return cat;
 }
 
-var interval= window.setInterval(updateTransition, 4000);
+var interval= window.setInterval(updateTransition, 2000);
+setTimeout(function(){clearInterval(interval)}, 20000);
