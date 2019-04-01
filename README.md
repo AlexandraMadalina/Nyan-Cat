@@ -25,4 +25,11 @@ Have you ever heard of [Nyan Cat](https://www.google.com/search?q=nyan+cat&oq=ny
 
 (this will make it look more like it's raining nyan cats)
 
-## [Results](https://alexandramadalina.github.io/Nyan-Cat/)
+
+
+## My approach
+
+I used html to create the button, then Javascript takes control of the animation.The main idea is that every time the button is pressed, a random number of cats is created. I have chosen 5 different pictures for the cats. I change the top, left and transform (rotate) properties with every requestAnimationFrame call. The animation is stopped after 10 seconds with setTimeOut() method.
+
+
+You can see the resoults [here](https://alexandramadalina.github.io/Nyan-Cat/)
