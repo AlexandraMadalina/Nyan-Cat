@@ -35,3 +35,12 @@ When the cat reaches the bottom of the screen, function getStartPosition put cat
 
 
 You can see the resoults [here](https://alexandramadalina.github.io/Nyan-Cat/)
+
+## Things I learned
+
+* An animation can be implemented as a sequence of frames. For instance, you can use `setInterval` method to to change the properties of an object every  x miliseconds.
+
+`let timer = setInterval(function() {
+  if (animation complete) clearInterval(timer);
+  else increase style.left by 2px
+}, 20); // change by 2px every 20ms, about 50 frames per second`
