@@ -31,5 +31,7 @@ Have you ever heard of [Nyan Cat](https://www.google.com/search?q=nyan+cat&oq=ny
 
 I used html to create the button, then Javascript takes control of the animation.The main idea is that every time the button is pressed, a random number of cats is created. I have chosen 5 different pictures for the cats. I change the top, left and transform (rotate) properties with every requestAnimationFrame call. The animation is stopped after 10 seconds with setTimeOut() method.
 
+When the cat reaches the bottom of the screen, function getStartPosition put cats back on top. In this way the program does not have to keep creating cats until the animation is stopped. It makes the program easier to run
+
 
 You can see the resoults [here](https://alexandramadalina.github.io/Nyan-Cat/)
