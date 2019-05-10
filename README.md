@@ -34,7 +34,7 @@ I used html to create the button, then Javascript takes control of the animation
 When the cat reaches the bottom of the screen, function getStartPosition put cats back on top. In this way the program does not have to keep creating cats until the animation is stopped. It makes the program easier to run
 
 
-You can see the resoults [here](https://alexandramadalina.github.io/Nyan-Cat/)
+You can see the results [here](https://alexandramadalina.github.io/Nyan-Cat/)
 
 ## Things I learned
 
